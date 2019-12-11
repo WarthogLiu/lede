@@ -12,9 +12,9 @@ name: OpenWrt-CI
 on:
   schedule:
     - cron: 0 18 * * *
-  push:
-     branches: 
-       - master
+  # push:
+     # branches: 
+       # - master
 
 jobs:
   build:
@@ -96,8 +96,15 @@ jobs:
           # 
           # 无论你想要对固件进行怎样的定制, 都需要且只需要修改 EOF 回环内的内容.
           # 
-
+          
           # 编译x64固件:
+          # cat >> .config <<EOF
+          # CONFIG_TARGET_x86=y
+          # CONFIG_TARGET_x86_64=y
+          # CONFIG_TARGET_x86_64_Generic=y
+          # EOF
+          
+          # 编译全志固件:
           cat >> .config <<EOF
           CONFIG_TARGET_sunxi=y
           CONFIG_TARGET_sunxi_cortexa53=y
